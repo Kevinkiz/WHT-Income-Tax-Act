@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<header>
+<marquee style="color:red;font:italics;"> ♥KIZITO KEVIN, ♥Accountant:TDL & ABAP Speacialist,♥Email:kevinkizito13@yahoo.com,♥TEL:256782889229.</marquee>
+</header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHT Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>WHT Table</h1>
+<tr>
+  <th>Details</th>
+  <td>
+    <textarea id="details-textarea2" class="textbox" rows="5" cols="40" oninput="checkKeywords()"></textarea>
+ </td>
+</tr>
+    <table>
+        <tr>
+            <th>Section</th>
+            <th>Type</th>
+            <th>Conditions</th>
+            <th>Amount</th>
+            <th>Rate</th>
+            <th>WHT Amount</th>
+        </tr>
+        <tr>
+            <td>Section 117</td>
+            <td>Payment of Interest to Resident Persons</td>
+            <td>
+        <p><strong>Please Check all Boxes to confirm & calculate WHT:</strong> Section 117 does not apply to;:</p>
+        <label><input type="checkbox" id="checkbox1"> Interest is not paid by a natural person</label><br>
+        <label><input type="checkbox" id="checkbox2"> Exempt interest paid</label><br>
+        <label><input type="checkbox" id="checkbox3"> Interest paid by a company to an associated company</label><br>
+        <label><input type="checkbox" id="checkbox4"> Interest other than government securities paid to a financial institution</label>
+    </td>
+            <td>
+                <input type="number" placeholder="00" id="amountInput" oninput="calculateWHT()" />
+            </td>
+            <td>
+        <p><strong>Part V:</strong> Income Tax Act Cap;</p>
+        15%</td>
+            <td>
+                <span id="whtResult">0.00</span>
+            </td>
+        </tr>
+        <tr>
+    <td>Section 117(b)</td>
+    <td>Interest Payments on Government Securities to Resident Persons</td>
+    <td>
+        <p><strong>Please Either one of the Boxes to confirm & calculate WHT:</strong> Section 117(b) applies to either:</p>
+        <label><input type="checkbox" id="checkbox5"> 20% whose maturity does not exceed 10 years</label><br>
+        <label><input type="checkbox" id="checkbox6"> 10% whose maturity is at least 10 years</label><br>
+    </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput2" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part V(c):</strong> Income Tax Act Cap;</p>
+        20%//10%
+    </td>
+    <td>
+        <span id="whtResult2">0.00</span>
+    </td>
+</tr>
+
+   <tr>
+    <td>Section 118</td>
+    <td>Interest Payments of Dividends to Resident Shareholders</td>
+    <td>
+        <p><strong>Please Either of the Boxes to confirm & calculate WHT:</strong> Section 118 applies to either:</p>
+        <label><input type="checkbox" id="checkbox7"> 15%. Dividend payments to Resident Persons with non exempt Dividend Income</label><br>
+         <label><input type="checkbox" id="checkbox8"> 10%. Dividend payments from Listed Companies on Stock Exchange to Individuals</label><br>
+   
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput3" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part V(b):</strong> Income Tax Act Cap;</p>
+        15%//10%
+    </td>
+    <td>
+        <span id="whtResult3">0.00</span>
+    </td>
+</tr>
+
+     <tr>
+    <td>Section 118A</td>
+    <td>Withholding Tax from Professional Fees</td>
+    <td>
+        <p><strong>Please Either of the Boxes to confirm & calculate WHT:</strong> Section 118A applies to either:</p>
+        <label><input type="checkbox" id="checkbox9"> 6%. Resident Persons with Professional Fees</label><br>
+         <label><input type="checkbox" id="checkbox10"> 0%. Persons Exempt by the Commissioner</label><br>
+   
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput4" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part Viii(1):</strong> Income Tax Act Cap;</p>
+        6%//0%
+    </td>
+    <td>
+        <span id="whtResult4">0.00</span>
+    </td>
+</tr>
+      <tr>
+      <td>Section 118B</td>
+    <td>Withholding Tax by the Purchaser of an Asset</td>
+    <td>
+        <p><strong>Please Check either of the Boxes to confirm & calculate WHT:</strong> Section 118B applies to either:</p>
+        <label><input type="checkbox" id="checkbox11"> 6%. Resident Person who purchases an Asset from a Non-Resident</label><br>
+        <label><input type="checkbox" id="checkbox12"> 0%. Other(Doesnot Apply)</label><br>
+ 
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput5" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part Viii(2):</strong> Income Tax Act Cap;</p>
+        6%//0%
+    </td>
+    <td>
+        <span id="whtResult5">0.00</span>
+    </td>
+</tr>
+
+       <tr>
+      <td>Section 118C</td>
+    <td>Withholding Tax on Payments for winnings of Gaming or Betting</td>
+    <td>
+        <p><strong>Please Check the Boxes to confirm & calculate WHT:</strong> Section 118C applies to:</p>
+        <label><input type="checkbox" id="checkbox13"> 15%. Winnings from Betting or Gaming</label><br>
+
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput6" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part X:</strong> Income Tax Act Cap;</p>
+        15%
+    </td>
+    <td>
+        <span id="whtResult6">0.00</span>
+    </td>
+</tr>
+
+      <tr>
+      <td>Section 118D</td>
+    <td>Resd Person makes Payments of Re-Insurance Premiums to a Non-Resd Person</td>
+    <td>
+        <p><strong>Please Check the Boxes to confirm & calculate WHT:</strong> Section 118D doesnot apply to:</p>
+        <label><input type="checkbox" id="checkbox14"> Uganda Reinsurance Company Limited</label><br>
+        <label><input type="checkbox" id="checkbox15"> African Reinsurance Corporation</label><br>
+        <label><input type="checkbox" id="checkbox16"> PTA Reinsurance Company</label><br>
+
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput7" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part XI:</strong> Income Tax Act Cap;</p>
+        10%
+    </td>
+    <td>
+        <span id="whtResult7">0.00</span>
+    </td>
+</tr>
+
+     <tr>
+      <td>Section 118F</td>
+    <td>Withholding Tax on commission paid by telecom service providers on airtime distribution
+& mobile money</td>
+    <td>
+        <p><strong>Please Check the Boxes to confirm & calculate WHT:</strong> Section 118F applies to:</p>
+        <label><input type="checkbox" id="checkbox17"> 10%. Payments as commission</label><br>
+
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput8" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part XII:</strong> Income Tax Act Cap;</p>
+        10%
+    </td>
+    <td>
+        <span id="whtResult8">0.00</span>
+    </td>
+</tr>
+         <tr>
+      <td>Section 118G</td>
+    <td>Withholding Tax on commission paid to an insurance agent</td>
+    <td>
+        <p><strong>Please Check the Boxes to confirm & calculate WHT:</strong> Section 118G applies to:</p>
+        <label><input type="checkbox" id="checkbox18"> 10%. Payments as commission</label><br>
+
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput9" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part XIII:</strong> Income Tax Act Cap;</p>
+        10%
+    </td>
+    <td>
+        <span id="whtResult9">0.00</span>
+    </td>
+</tr>
+
+       <tr>
+      <td>Section 118H</td>
+    <td>Withholding Tax on commission paid to an Advertising agent</td>
+    <td>
+        <p><strong>Please Check the Boxes to confirm & calculate WHT:</strong> Section 118H applies to:</p>
+        <label><input type="checkbox" id="checkbox19"> 10%. Payments as commission</label><br>
+
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput10" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part XIII:</strong> Income Tax Act Cap;</p>
+        10%
+    </td>
+    <td>
+        <span id="whtResult10">0.00</span>
+    </td>
+</tr>
+
+      <tr>
+            <td>Section 119</td>
+            <td>Payment of Goods & Services</td>
+            <td>
+        <p><strong>Please Check any of the Boxes to confirm & calculate WHT:</strong> Section 119 applies to any of;:</p>
+        <label><input type="checkbox" id="checkbox20"> For a supply of goods or Services exceeding 1 million Shillings
+               except Agricultural supplies,exempt (Organisations & Individuals)</label><br>
+        <label><input type="checkbox" id="checkbox21"> Seperate Supplies for 1 million Shillings or Less each but ultimately exceeds 1 million Shillings</label><br>
+        <label><input type="checkbox" id="checkbox22"> Imports into Uganda</label><br>
+        <label><input type="checkbox" id="checkbox23"> Goods or services would ordinarily
+be supplied in a single supply for an amount exceeding 1 million shillings</label>
+    </td>
+            <td>
+                <input type="number" placeholder="00" id="amountInput11" oninput="calculateWHT()" />
+            </td>
+            <td>
+        <p><strong>Part VIII:</strong> Income Tax Act Cap;</p>
+        6%</td>
+            <td>
+                <span id="whtResult11">0.00</span>
+            </td>
+        </tr>
+        
+        <tr>
+      <td>Section 120</td>
+    <td>Withholding Tax on International Payments</td>
+    <td>
+        <p><strong>Please Check any of the Boxes to confirm & calculate WHT:</strong> Section 120 applies to:</p>
+        <label><input type="checkbox" id="checkbox24"> 15%. Payments to Agents,Non-Resd(Groups,entertainers or Sports persons) except exempt payments</label><br>
+
+         </td>
+    <td>
+        <input type="number" placeholder="00" id="amountInput12" oninput="calculateWHT()" />
+    </td>
+    <td>
+        <p><strong>Part IV:</strong> Income Tax Act Cap;</p>
+        15%
+    </td>
+    <td>
+        <span id="whtResult12">0.00</span>
+    </td>
+</tr>
+        <!-- Add more rows as needed -->
+   </table>
+<td>
+    <button onclick="clearForm2()">Clear Forms</button>
+    <button onclick="printAsPDF2()">Save as PDFs</button>
+
+    </td>
+
+<script>
+    function clearForms() {
+        clearForm("checkbox1", "checkbox2", "checkbox3", "checkbox4", "amountInput", "whtResult");
+        clearForm("checkbox5", "checkbox6", "amountInput2", "whtResult2");
+        clearForm("checkbox7", "checkbox8", "amountInput3", "whtResult3");
+        clearForm("checkbox9", "checkbox10", "amountInput4", "whtResult4");
+        clearForm("checkbox11", "checkbox12", "amountInput5", "whtResult5"); // Clear new section
+        clearForm("checkbox13", "amountInput6", "whtResult6"); // Clear new section
+        clearForm("checkbox14", "checkbox15", "checkbox16", "amountInput7", "whtResult7"); // Clear new section
+        clearForm("checkbox17", "amountInput8", "whtResult8"); // Clear new section
+        clearForm("checkbox18", "amountInput9", "whtResult9");
+        clearForm("checkbox19", "amountInput10", "whtResult10");
+        clearForm("checkbox20", "checkbox21", "checkbox22", "checkbox23", "amountInput11", "whtResult11");
+        clearForm("checkbox24", "amountInput12", "whtResult12");
+        clearForm("details-textarea2");
+    }
+
+
+    function clearForm(...ids) {
+        ids.forEach(id => {
+            const element = document.getElementById(id);
+            if (element.type === "checkbox") {
+                element.checked = false;
+            } else {
+                element.value = "";
+            }
+        });
+    }
+
+    function clearForm2() {
+        clearForms();
+    }
+</script>
+
+<script>
+function printAsPDF2() {
+  // Set the page to print in landscape orientation
+  var printOptions = {
+    orientation: "landscape"
+  };
+  
+  // Print the current page as a PDF
+  window.print();
+}
+</script>
+
+</body>
+<script>
+    function calculateWHT() {
+        const amountInput = document.getElementById("amountInput");
+        const whtResult = document.getElementById("whtResult");
+
+        const amountInput2 = document.getElementById("amountInput2");
+        const whtResult2 = document.getElementById("whtResult2");
+
+        const amountInput3 = document.getElementById("amountInput3");
+        const whtResult3 = document.getElementById("whtResult3");
+
+        const amountInput4 = document.getElementById("amountInput4");
+        const whtResult4 = document.getElementById("whtResult4");
+
+        const amountInput6 = document.getElementById("amountInput6"); // Add this line
+        const whtResult6 = document.getElementById("whtResult6"); 
+        
+        const amountInput7 = document.getElementById("amountInput7"); // Add this line
+        const whtResult7 = document.getElementById("whtResult7"); 
+        
+        const amountInput8 = document.getElementById("amountInput8"); // Add this line
+        const whtResult8 = document.getElementById("whtResult8");
+        
+       const amountInput9 = document.getElementById("amountInput9"); // Add this line
+       const whtResult9 = document.getElementById("whtResult9");
+
+       const amountInput10 = document.getElementById("amountInput10"); // Add this line
+       const whtResult10 = document.getElementById("whtResult10");
+
+       const amountInput11 = document.getElementById("amountInput11"); // Add this line
+       const whtResult11 = document.getElementById("whtResult11");
+
+       const amountInput12 = document.getElementById("amountInput12"); // Add this line
+       const whtResult12 = document.getElementById("whtResult12");
+
+        const checkbox1 = document.getElementById("checkbox1");
+        const checkbox2 = document.getElementById("checkbox2");
+        const checkbox3 = document.getElementById("checkbox3");
+        const checkbox4 = document.getElementById("checkbox4");
+        const checkbox5 = document.getElementById("checkbox5");
+        const checkbox6 = document.getElementById("checkbox6");
+        const checkbox7 = document.getElementById("checkbox7");
+        const checkbox8 = document.getElementById("checkbox8");
+        const checkbox9 = document.getElementById("checkbox9");
+        const checkbox10 = document.getElementById("checkbox10");
+        const checkbox11 = document.getElementById("checkbox11");
+        const checkbox12 = document.getElementById("checkbox12");
+        const checkbox13 = document.getElementById("checkbox13");
+        const checkbox14 = document.getElementById("checkbox14");
+        const checkbox15 = document.getElementById("checkbox15");
+        const checkbox16 = document.getElementById("checkbox16");
+        const checkbox17 = document.getElementById("checkbox17");
+        const checkbox18 = document.getElementById("checkbox18");
+        const checkbox19 = document.getElementById("checkbox19");
+        const checkbox20 = document.getElementById("checkbox20");
+        const checkbox21 = document.getElementById("checkbox21");
+        const checkbox22 = document.getElementById("checkbox22");
+        const checkbox23 = document.getElementById("checkbox23"); 
+        const checkbox24 = document.getElementById("checkbox24");
+       
+        if (checkbox1.checked && checkbox2.checked && checkbox3.checked && checkbox4.checked) {
+            const inputValue = parseFloat(amountInput.value);
+            if (!isNaN(inputValue)) {
+                const calculatedAmount = 0.15 * inputValue;
+                whtResult.textContent = calculatedAmount.toFixed(2);
+            } else {
+                whtResult.textContent = "0.00";
+            }
+        } else {
+            whtResult.textContent = "Please check all checkboxes to calculate WHT";
+        }
+
+        if (checkbox5.checked || checkbox6.checked) {
+            const inputValue2 = parseFloat(amountInput2.value);
+            if (!isNaN(inputValue2)) {
+                let rate;
+                if (checkbox5.checked) {
+                    rate = 0.20;
+                } else {
+                    rate = 0.10;
+                }
+                const calculatedAmount2 = rate * inputValue2;
+                whtResult2.textContent = "$" + calculatedAmount2.toFixed(2);
+            } else {
+                whtResult2.textContent = "$0.00";
+            }
+        } else {
+            whtResult2.textContent = "Please check at least one of the checkboxes to calculate WHT";
+        }
+
+        if (checkbox7.checked || checkbox8.checked) {
+            const inputValue3 = parseFloat(amountInput3.value);
+            if (!isNaN(inputValue3)) {
+                let rate3;
+                if (checkbox7.checked) {
+                    rate3 = 0.15;
+                } else {
+                    rate3 = 0.10;
+                }
+                const calculatedAmount3 = rate3 * inputValue3;
+                whtResult3.textContent = "$" + calculatedAmount3.toFixed(2);
+            } else {
+                whtResult3.textContent = "$0.00";
+            }
+        } else {
+            whtResult3.textContent = "Please check either one of the checkboxes to calculate WHT";
+        }
+
+        if (checkbox9.checked || checkbox10.checked) {
+            const inputValue4 = parseFloat(amountInput4.value);
+            if (!isNaN(inputValue4)) {
+                let rate4;
+                if (checkbox9.checked) {
+                    rate4 = 0.06;
+                } else {
+                    rate4 = 0.00;
+                }
+                const calculatedAmount4 = rate4 * inputValue4;
+                whtResult4.textContent = "$" + calculatedAmount4.toFixed(2);
+            } else {
+                whtResult4.textContent = "$0.00";
+            }
+        } else {
+            whtResult4.textContent = "Please check either one of the checkboxes to calculate WHT";
+        }
+
+   if (checkbox11.checked || checkbox12.checked) {
+            const inputValue5 = parseFloat(amountInput5.value);
+            if (!isNaN(inputValue5)) {
+                let rate5;
+                if (checkbox11.checked) {
+                    rate5 = 0.06;
+                } else {
+                    rate5 = 0.00;
+                }
+                const calculatedAmount5 = rate5 * inputValue5;
+                whtResult5.textContent = "$" + calculatedAmount5.toFixed(2);
+            } else {
+                whtResult5.textContent = "$0.00";
+            }
+        } else {
+            whtResult5.textContent = "Please check either one of the checkboxes to calculate WHT";
+        }
+
+       if (checkbox13.checked) {
+            const inputValue6 = parseFloat(amountInput6.value);
+            if (!isNaN(inputValue6)) {
+                const calculatedAmount6 = 0.15 * inputValue6;
+                whtResult6.textContent = "$" + calculatedAmount6.toFixed(2);
+            } else {
+                whtResult6.textContent = "$0.00";
+            }
+        } else {
+            whtResult6.textContent = "Please check the checkbox to calculate WHT";
+        }
+
+         if (checkbox14.checked && checkbox15.checked && checkbox16.checked) {
+            const inputValue7 = parseFloat(amountInput7.value);
+            if (!isNaN(inputValue7)) {
+                const calculatedAmount7 = 0.10 * inputValue7;
+                whtResult7.textContent = "$" + calculatedAmount7.toFixed(2);
+            } else {
+                whtResult7.textContent = "$0.00";
+            }
+        } else {
+            whtResult7.textContent = "Please check all checkboxes to calculate WHT";
+        }
+     
+       if (checkbox17.checked) {
+            const inputValue8 = parseFloat(amountInput8.value);
+            if (!isNaN(inputValue8)) {
+                const calculatedAmount8 = 0.1 * inputValue8;
+                whtResult8.textContent = "$" + calculatedAmount8.toFixed(2);
+            } else {
+                whtResult8.textContent = "$0.00";
+            }
+        } else {
+            whtResult8.textContent = "Please select the checkbox to calculate WHT";
+        }
+      if (checkbox18.checked) {
+            const inputValue9 = parseFloat(amountInput9.value);
+            if (!isNaN(inputValue9)) {
+                const calculatedAmount9 = 0.1 * inputValue9;
+                whtResult9.textContent = "$" + calculatedAmount9.toFixed(2);
+            } else {
+                whtResult9.textContent = "$0.00";
+            }
+        } else {
+            whtResult9.textContent = "Please select the checkbox to calculate WHT";
+        }
+
+     if (checkbox19.checked) {
+            const inputValue10 = parseFloat(amountInput10.value);
+            if (!isNaN(inputValue10)) {
+                const calculatedAmount10 = 0.1 * inputValue10;
+                whtResult10.textContent = "$" + calculatedAmount10.toFixed(2);
+            } else {
+                whtResult10.textContent = "$0.00";
+            }
+        } else {
+            whtResult10.textContent = "Please select the checkbox to calculate WHT";
+        }
+
+       if (checkbox20.checked || checkbox21.checked || checkbox22.checked || checkbox23.checked) {
+            const inputValue11 = parseFloat(amountInput11.value);
+            if (!isNaN(inputValue11)) {
+                const calculatedAmount11 = 0.06 * inputValue11;
+                whtResult11.textContent = "$" + calculatedAmount11.toFixed(2);
+            } else {
+                whtResult11.textContent = "$0.00";
+            }
+        } else {
+            whtResult11.textContent = "Please check at least one of the checkboxes to calculate WHT";
+        }
+
+      if (checkbox24.checked) {
+            const inputValue12 = parseFloat(amountInput12.value);
+            if (!isNaN(inputValue12)) {
+                const calculatedAmount12 = 0.15 * inputValue12;
+                whtResult12.textContent = calculatedAmount12.toFixed(2);
+            } else {
+                whtResult12.textContent = "$0.00";
+            }
+        } else {
+            whtResult12.textContent = "Please select any of the checkbox to calculate WHT";
+     }
+    }
+</script>
+
+<script>
+    function checkKeywords() {
+        const keywordTextArea = document.getElementById("details-textarea2");
+        const tableRows = document.querySelectorAll("table tr");
+        
+        const keywordText = keywordTextArea.value.toLowerCase();
+        
+        tableRows.forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            if (rowText.includes(keywordText)) {
+                row.style.display = "table-row"; // Show the highlighted row
+                row.style.backgroundColor = "pink"; // Apply highlighted background
+            } else {
+                row.style.display = "none"; // Hide unhighlighted rows
+                row.style.backgroundColor = ""; // Clear background for unhighlighted rows
+            }
+        });
+    }
+</script>
+<footer>
+<marquee style="color:red;font:italics;"> ♥KIZITO KEVIN, ♥Accountant:TDL & ABAP Speacialist,♥Email:kevinkizito13@yahoo.com,♥TEL:256782889229.</marquee>
+</footer>
+</html>
